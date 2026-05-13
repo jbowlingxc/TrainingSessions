@@ -2,7 +2,7 @@
 
 ---
 
-#### **Section 1: Core Concepts**
+#### **Section 1: Core Concepts (Estimated Time: 15 mins)**
 
 **Slide 1: Title Slide**
 - **Content**: 
@@ -43,19 +43,17 @@
 
 ---
 
-#### **[DEMO BREAK 1: Configuring MCP in LMStudio]**
-
+#### **[DEMO BREAK 1: Configuring MCP in LMStudio] (Estimated Time: 15 mins)**
 **Goal**: Demonstrate adding three different types of MCP servers to LMStudio.
-
 **Step-by-Step Instructions**:
 1. Open **LMStudio**.
 2. Navigate to the **MCP** tab (or Settings $\rightarrow$ MCP).
 3. Click **"Add Server"** or edit the configuration file.
 4. Paste the provided `mcp.json` configuration.
 5. Restart the MCP session/server in LMStudio.
-6. In the chat, ask the LLM to perform a task using one of the tools (e.g., "What is the current time in London?" or "Search for X").
+6. In the chat, ask theLLM to perform a task using one of the tools (e.g., "What is the current time in London?" or "Search for X").
 
-**Copy-Paste Configuration (`mcp.json`)**:
+**Code/Config Blocks**:
 ```json
 {
   "mcpServers": {
@@ -77,11 +75,12 @@
   }
 }
 ```
-*(Note: Replace the example URLs/packages with actual servers you have installed or available).*
+
+**Narration Notes**: Highlight how easy it is to add servers via JSON config and show the real-time logs in LMStudio as the tool call happens.
 
 ---
 
-#### **Section 2: Configuring MCP in LMStudio**
+#### **Section 2: Configuring MCP in LMStudio (Estimated Time: 10 mins)**
 
 **Slide 5: LMStudio & MCP Overview**
 - **Content**:
@@ -109,7 +108,7 @@
 
 ---
 
-#### **Section 3: Security: Auditing and Scanning**
+#### **Section 3: Security: Auditing and Scanning (Estimated Time: 10 mins)**
 
 **Slide 8: The Danger Zone**
 - **Content**:
@@ -147,8 +146,7 @@
 
 ---
 
-#### **[DEMO BREAK 2: Security Scanning]**
-
+#### **[DEMO BREAK 2: Security Scanning] (Estimated Time: 5 mins)**
 **Goal**: Demonstrate how to scan an MCP server for vulnerabilities.
 
 **Step-by-Step Instructions**:
@@ -175,9 +173,11 @@ snyk test
 snyk agent-scan .
 ```
 
+**Narration Notes**: Explain how `npm audit` finds known issues and how Snyk goes deeper into the actual behavior of the code.
+
 ---
 
-#### **Section 4: Summary & Best Practices**
+#### **Section 4: Summary & Best Practices (Estimated Time: 5 mins)**
 
 **Slide 12: Mitigation Strategies**
 - **Content**:
