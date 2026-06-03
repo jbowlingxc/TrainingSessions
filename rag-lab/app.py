@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import httpx
 import chromadb
+from rank_bm25 import BM25Okapi
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import Chroma
 from config import CHROMA_SERVER_URL, DATA_DIR, LMSTUDIO_API_BASE, LLM_MODEL_NAME, EMBEDDING_MODEL_NAME, LMSTUDIO_API_KEY
@@ -125,6 +126,7 @@ with tabs[2]:
         with st.expander("⚙️ Retrieval Settings", expanded=True):
             k_value = st.number_input("Number of chunks to retrieve (k)", min_value=1, max_value=20, value=3)
             similarity_threshold = st.slider("Similarity Threshold", min_value=0.0, max_value=1.0, value=0.0, step=0.05)
+            use_hybrid_search = st.checkbox("Enable Hybrid Search (BM25 + Vector)", value=False)
 
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
