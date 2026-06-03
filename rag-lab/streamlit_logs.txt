@@ -1,0 +1,24 @@
+2026-06-03 13:36:06.480 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.16.103.72:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+2026-06-03 13:50:02.881 Uncaught app execution
+Traceback (most recent call last):
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 789, in code_to_exec
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/app.py", line 6, in <module>
+    from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/langchain_openai/__init__.py", line 3, in <module>
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/langchain_openai/chat_models/__init__.py", line 3, in <module>
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/langchain_openai/chat_models/azure.py", line 10, in <module>
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/openai/__init__.py", line 9, in <module>
+  File "/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/openai/types/__init__.py", line 103, in <module>
+ImportError: cannot import name 'ModerationCreateResponse' from 'openai.types.moderation_create_response' (/Users/jesse/Documents/VSCode Projects/TrainingSessions/rag-lab/.venv/lib/python3.12/site-packages/openai/types/moderation_create_response.py)
