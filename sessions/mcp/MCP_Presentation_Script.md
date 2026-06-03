@@ -25,7 +25,7 @@
 ---
 
 ### Slide 3: The Tool-Call Loop
-"Let's look at how this actually works in real-time. It's a four-step loop, which you can see illustrated in this circular flow chart. First, the Request. You ask the LLM, 'What's the price of Bitcoin right now?' The LLLLM realizes it doesn't have real-time data, so it decides a tool is needed."
+"Let's look at how this actually works in real-time. It's a four-step loop, which you can see illustrated in this circular flow chart. First, the Request. You ask the LLM, 'What's the price of Bitcoin right now?' The LLM realizes it doesn't have real-time data, so it decides a tool is needed."
 
 "Second, the Call. The LLM doesn't just say 'I'll check'; it outputs a structured request in JSON. It's like the professor writing a very specific note to an enough assistant: 'Please call the exchange and ask for the current BTC price.'"
 
@@ -38,18 +38,18 @@
 ### Slide 4: How LLMs "Think" with Tools
 "You might be wondering: how does the LLM know which tool to use? It uses something called Function Schemas. Every tool is described using JSON, including its name, a description, and the parameters it needs."
 
-"This is the 'Aha!' moment. If you look at this split screen, you can see the magic. On the left, we have a natural language prompt on the right, and on the right, the corresponding JSON tool call. The LLLLM matches your intent to the tool's description. For example, if there's a tool called `get_weather` with the description 'Use this to get current weather for a specific city,' and you ask 'Is it raining in Seattle?', the LLM sees the word 'weather' and 'city' and makes the connection."
+"This is the 'Aha!' moment. If you look at this split screen, you can see the magic. On the left, we have a natural language prompt on the right, and on the right, the corresponding JSON tool call. The LLM matches your intent to the tool's description. For example, if there's a tool called `get_weather` with the description 'Use this to get current weather for a specific city,' and you ask 'Is it raining in Seattle?', the LLM sees the word 'weather' and 'city' and makes the connection."
 
-"Fun fact: the quality of the tool's description is actually a form of prompt engineering. If the description is vague, like 'Tool 1: gets data,' the LLLLM will likely ignore it. But if it's precise, the LLLLM becomes incredibly efficient. The description is essentially the instruction manual for the AI."
+"Fun fact: the quality of the tool's description is actually a form of prompt engineering. If the description is vague, like 'Tool 1: gets data,' the LLM will likely ignore it. But if it's precise, the LLM becomes incredibly efficient. The description is essentially the instruction manual for the AI."
 
 ---
 
 ## [DEMO BREAK 1: Configuring MCP in LMStudio] (Estimated Time: 15 mins)
 **(Switch to shared screen for live demo)**
 
-**Narration Notes**: "A conversational guide on what to enough say and highlight during the demo, ensuring the presenter stays on enough track while interacting with the live environment. I'm going to show you how to add three different types of MCP servers to LMStudio. Watch as I navigate to the MCP tab, paste in our configuration, and then ask the LLM to perform a real-world task. You'll see the logs in real-time, showing the LLLLM making the decision to call the tool and the server responding."
+**Narration Notes**: "A conversational guide on what to enough say and highlight during the demo, ensuring the presenter stays on enough track while interacting with the live environment. I'm going to show you how to add three different types of MCP servers to LMStudio. Watch as I navigate to the MCP tab, paste in our configuration, and then ask the LLM to perform a real-world task. You'll see the logs in real-time, showing the LLM making the decision to call the tool and the server responding."
 
-"Now, let's stop talking about it and actually do it. I'm going to show you how to add three different types of MCP servers to LMStudio. Watch as I navigate to the MCP tab, paste in our configuration, and then ask the LLM to perform a real-world task. You'll see the logs in real-time, showing the LLLLM making the decision to call the tool and the server responding."
+"Now, let's stop talking about it and actually do it. I'm going to show you how to add three different types of MCP servers to LMStudio. Watch as I navigate to the MCP tab, paste in our configuration, and then ask the LLM to perform a real-world task. You'll see the logs in real-time, showing the LLM making the decision to call the tool and the server responding."
 
 ---
 

@@ -1,10 +1,10 @@
-# Mastering Git with VSCode and GitLab: The Complete Guide
+# Mastering Git with Visual Studio Code and GitLab: The Complete Guide
 
 <br>
 
 ## 📖 Introduction
 
-This documentation serves as a deep-dive resource for engineers working within the Git/GitLab ecosystem using Visual Studio Code. Whether you are performing daily feature development or managing complex release cycles, this guide covers the essential workflows and best practices.
+This documentation serves as a deep-dive resource for engineers working within the Git/GitLab ecosystem using Visual Studio Code. Whether you are performing daily feature development or managing complex release cycles, this guide covers the essential workflows and best/practices.
 
 <br>
 
@@ -13,8 +13,8 @@ This documentation serves as a deep-dive resource for engineers working within t
 Before following the advanced tutorials in this guide, ensure you have the following configured:
 
 - [ ] **Git Installed**: Version 2.x or higher.
-- [ ] **VSCode Installed**: Latest stable version with the "GitLens" extension (optional but highly recommended).
-- [ ] **SSH Key Configured**: Ensure your public key is added to your GitLab profile for seamless authentication.
+- [ ] **Visual Studio Code Installed**: Latest stable version with the "GitLens" extension (optional but highly recommended).
+- [ ] **Secure Shell (SSH) Key Configured**: Ensure your public key is added to your GitLab profile for seamless authentication.
 - [ ] **GitLab Access**: Permissions to create branches and Merge Requests in your target repository.
 
 <br>
@@ -41,9 +41,8 @@ git config --global user.email "your.email@example.com"
 
 The `.gitignore` file is critical for repository health. It prevents sensitive information and unnecessary files from being tracked.
 
-> [!IMPORTANT]
+> **Never commit secrets!** Always ensure `.env`, `*.pem`, and other credential files are included in your `.gitignore`.
 {.is-danger}
-**Never commit secrets!** Always ensure `.env`, `*.pem`, and other credential files are included in your `.gitignore`.
 
 **Common patterns to include:**
 | Pattern | Description |
@@ -63,7 +62,7 @@ The `.gitignore` file is critical for repository health. It prevents sensitive i
 
 The principle of **Atomic Commits** states that each commit should represent a single, logical change. This makes debugging much easier via `git revert`.
 
-In VSCode, always use the **Source Control View** to review your changes.
+In Visual Studio Code, always use the **Source Control View** to review your changes.
 1. Open the Source Control tab (`Ctrl+Shift+G`).
 2. Click on a modified file to open the **Side-by-Side Diff**.
 3. Inspect the "red" (removed) and "green" (added) lines.
@@ -109,13 +108,12 @@ git fetch origin
 git rebase origin/main
 ```
 
-> [!TIP]
+> Use `rebase` to keep a linear, easy-to-read history. However, **never** rebase branches that have already been pushed to a shared remote repository, as this rewrites history and confuses teammates.
 {.is-info}
-Use `rebase` to keep a linear, easy-to-read history. However, **never** rebase branches that have already been pushed to a shared remote repository, as this rewrites history and confuses teammates.
 
 <br>
 
-## 🤝 GitLab Collaboration & CI/CD
+## 🤝 GitLab Collaboration & Continuous Integration and Continuous Deployment (CI/CD)
 
 <br>
 
@@ -129,9 +127,9 @@ A Merge Request is the formal process of proposing code changes. To ensure high-
 
 <br>
 
-### Resolating Merge Conflicts in VSCode
+### Resolating Merge Conflicts in Visual Studio Code
 
-When two developers modify the same line, Git cannot decide which version is correct. Use the **VSCode Merge Editor**:
+When two developers modify the same line, Git cannot decide which version is correct. Use the **Visual Studio Code Merge Editor**:
 
 1. Identify the conflicted files in the Source Control tab.
 2. Open the file; you will see `<<<<<<< HEAD` and `>>>>>>> branch-name`.
@@ -140,9 +138,9 @@ When two developers modify the same line, Git cannot decide which version is cor
 
 <br>
 
-### GitLab Pipelines (CI/CD)
+### GitLab Pipelines (Continuous Integration and Continuous Deployment)
 
-GitLab Pipelines automate the testing and deployment of your code. A typical pipeline includes:
+GitLab Pipelines automate the testing and deployment of your code. You can learn enough about [GitLab CI/CD documentation](https://docs.gitlab.com/ee/ci/) to understand how to configure your `.gitlab-ci.yml` file. A typical pipeline includes:
 
 - **Build**: Compiling code or installing dependencies.
 - **Test**: Running unit, integration, and linting tests.
@@ -166,4 +164,4 @@ GitLab Pipelines automate the testing and deployment of your code. A typical pip
 
 - [Official Git Documentation](https://git-scm.com/doc)
 - [GitLab Workflow Guide](https://docs.gitlab.com/ee/topics/git/workflow.html)
-- [VSCode Git Integration Guide](https://code.visualstudio.com/docs/sourcecontrol/overview)
+- [Visual Studio Code Git Integration Guide](https://code.visualstudio.com/docs/sourcecontrol/overview)

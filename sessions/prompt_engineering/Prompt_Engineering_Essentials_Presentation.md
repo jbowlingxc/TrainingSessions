@@ -130,12 +130,32 @@ Text: \"\"\"{user_input}\"\"\"
 
 ---
 
-#### **Section 4: Advanced Integration (Estimated and Time: 5 mins)**
+#### **Section 4: Advanced Prompting & Tooling (Estimated Time: 10 mins)**
 
-**Slide 7: RAG and Context Management**
+**Slide 7: The Power of Meta-Prompting**
 - **Content**:
-    - Retrieval Augmented Generation (RAG): Connecting LLMs to external, real-time data.
-    - Context Window Management: Strategies for handling long documents without losing information.
-    - Instruction Tuning: How models are trained to follow specific prompt formats.
-- **Image**: An architecture diagram showing a User Query $\rightarrow$ Vector Database Search $\rightarrow$ Augmented Prompt $\rightarrow$ LLM $\rightarrow$ Final Answer.
-- **Speaker Notes**: Moving from static knowledge to dynamic, data-driven intelligence.
+    - Meta-Prompting: Using an LLM to generate, refine, and evaluate prompts.
+    - "Prompt for a prompt": Providing high-level goals and letting the model design the structured instruction set.
+    - Self-Correction: Instructing models to review their own generated instructions for flaws.
+- **Image**: A diagram showing a User $\rightarrow$ LLM (as Prompt Engineer) $\rightarrow$ High-Quality Prompt $\rightarrow$ Final Task execution.
+- **Speaker Notes**: Using the model to do the heavy lifting of prompt design.
+
+**Slide 8: Managing Context with Structure**
+- **Content**:
+    - The "Lost in the Middle" phenomenon: How models struggle with information buried in large prompts.
+    - Structural Delimiters: Using XML tags (`<context>`, `<instruction>`) and Markdown headers to create clear boundaries.
+    - Mitigating Injection: How strict structure protects instructions from being overridden by user input.
+- **Image**: A visualization of a long prompt where the "Middle" part is faded/blurry, contrasted with a well-structured, segmented prompt.
+- **Speaker Notes**: Organization isn't just for humans; it's vital for LLM attention.
+
+---
+
+#### **Section 5: The Prompt Engineer's Toolkit (Estimated Time: 5 mins)**
+
+**Slide 9: Tooling for Success**
+- **Content**:
+    - Playgrounds & IDEs: Using OpenAI Playground, Anthropic Workbench, or VS Code extensions.
+    - Evaluation Frameworks: Tools like `promptfoo` to run automated test suites against prompt variations.
+    - Version Control for Prompts: Treating prompts as code (Git, specialized prompt management platforms).
+- **Image**: A collage of logos/screenshots from popular prompting and evaluation tools.
+- **Speaker Notes**: Moving from manual testing to automated, repeatable engineering.

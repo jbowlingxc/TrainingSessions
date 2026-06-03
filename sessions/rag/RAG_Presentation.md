@@ -4,34 +4,34 @@
 
 #### **Section 1: The Problem & The Solution (Estimated Time: 10 mins)**
 
-**Slide 1: The LLM Knowledge Gap**
+**Slide 1: The Large Language Model Knowledge Gap**
 - **Content**:
     - Knowledge Cutoff: Models only know what they were trained on.
     - Hallucinations: Making up facts when unsure.
-    - Lack of Private Data: Inability to access your internal documents or realtm info.
-- **Image**: A diagram showing an LLM trapped inside a "training bubble" with a wall blocking new information from the outside world.
+    - Lack of Private Data: Inability to access your internal documents or real-time information.
+- **Image**: A diagram showing a Large Language Model trapped inside a "training bubble" with a wall blocking new information from the outside world.
 - **Speaker Notes**: Start by highlighting why even the best models fail in enterprise settings without external context.
 
-**Slide 2: Introducing RAG**
+**Slide 2: Introducing Retrieval-Augmented Generation (RAG)**
 - **Content**:
     - Definition: Retrieval-Augmented Generation.
     - The Core Idea: "Open Book" vs. "Closed Book" exams.
     - Adding dynamic, verifiable context to the prompt at runtime.
-- **Image**: A split screen showing a student taking a test from memory (LLM) versus a student using a textbook (RAG).
+- **Image**: A split screen showing a student taking a test from memory (Large Language Model) versus a student using a textbook (RAG).
 - **Speaker Notes**: Use the exam analogy to make the concept immediately relatable.
 
 **Slide 3: High-Level RAG Architecture**
 - **Content**:
     - User Query $\rightarrow$ Retrieval Engine.
-    - Context Retrieval from Vector DB.
+    - Context Retrieval from Vector Database.
     - Prompt Augmentation (Query + Retrieved Context).
-    - LLM Generation.
-- **Image**: A flowchart showing the flow of data from a user query through a vector database and finally into an LLM prompt template.
+    - Large Language Model Generation.
+- **Image**: A flowchart showing the flow of data from a user query through a vector database and finally into a Large Language Model prompt template.
 - **Speaker Notes**: Walk through the lifecycle of a single request.
 
 ---
 
-#### **[DEMO 1: The Brain - Proving the Gap] (Estimated Time: 5 mins)**
+#### **[DEMO BREAK 1: The Brain - Proving the Gap] (Estimated Time: 5 mins)**
 
 **Goal**: Demonstrate LMStudio's inability to answer questions about recent or private events.
 
@@ -39,6 +39,11 @@
 1.  **Open LMStudio**: Ensure a model is loaded and the local server is running.
 2.  **The "Failure" Query**: Ask the model: *"Who won the [Insert Fake Event from Today]?"*
 3.  **Observe**: Note the hallucination or the "I don't know" response.
+
+**Code/Config Blocks**:
+(None required for this step)
+
+**Narration Notes**: Highlight how the model attempts to provide an answer despite lacking the current information.
 
 ---
 
@@ -52,32 +57,34 @@
 - **Image**: A visualization of a 3D coordinate system where words like "Apple" and "Fruit" are clustered together, far from "Car".
 - **Speaker Notes**: Focus on the concept of "distance as meaning."
 
-**Slide 5: Vector Databases: The Memory Bank**
+**Slide             5: Vector Databases: The Memory Bank**
 - **Content**:
     - Storing embeddings as vectors.
-    - Efficient indexing (HNSW, IVF).
+    - Efficient indexing (Hierarchical Navigable Small World (HNSW), Inverted File Index (IVF)).
     - Enabling fast similarity searches across millions of documents.
 - **Image**: An illustration of a library where books aren't organized by title, but by "concept clusters" on shelves.
-MT-Speaker Notes: Emphasize that the DB is optimized for finding "similar" things, not exact string matches.
+- **Speaker Notes**: Emphasize that the database is optimized for finding "similar" things, not exact string matches.
 
 ---
 
-#### **[DEMO 2: The Memory - Injecting Truth] (Estimated Time: 10 mins)**
+#### **[DEMO BREAK 2: The Memory - Injecting Truth] (Estimated Time: 10 mins)**
 
 **Goal**: Deploy Qdrant via Podman and inject new information into the system.
 
 **Step-by-Step Instructions**:
-1.  **Launch Vector DB with Podman**: Run a Qdrant container.
+1.  **Launch Vector Database with Podman**: Run a Qdrant container.
 2.  **The "Injection" Script**: Use a simple Python snippet to upsert a vector containing the *actual* answer to the question from Demo 1.
 3.  **Verify**: Show that the data is now present in the database via a `GET` request or logs.
 
 **Code/Config Blocks**:
 ```bash
 # Start Qdrant via Podman
-podman run -d -p 6333:6333 -p 6334:6334 \
+podman run -d -p 6333:6334 -p 6334:6334 \
     -v $(pwd)/qdrant_storage:/qdrant/storage:Z \
     qdrant/qdrant
 ```
+
+**Narration Notes**: Explain how we are manually adding "truth" to the database so the model can find it.
 
 ---
 
@@ -101,7 +108,7 @@ podman run -d -p 6333:6333 -p 6334:6334 \
 
 ---
 
-#### **[DEMO 3: The Bridge - The Full Pipeline] (Estimated Time: 10 mins)**
+#### **[DEMO BREAK 3: The Bridge - The Full Pipeline] (Estimated Time: 10 mins)**
 
 **Goal**: Run the complete Python pipeline to show the "Augmented" part of RAG in action.
 
@@ -110,8 +117,8 @@ podman run -d -p 6333:6333 -p 6334:6334 \
 2.  **Observe the Logs**:
     - **Log 1**: The original user query.
     - **Log 2**: The retrieved chunk (the "truth" we injected in Demo 2).
-    - **Log 3**: The final, massive prompt sent to the LLM.
-3.  **The Result**: Show that the LLM now answers the question *correctly*.
+    - **Log 3**: The final, massive prompt sent to the Large Language Model.
+3.  **The Result**: Show that the model now answers the question *correctly*.
 
 **Code/Config Blocks**:
 ```python
@@ -119,7 +126,7 @@ import requests
 
 def retrieve_and_generate(query):
     # 1. Retrieve (Simulated retrieval from Qdrant)
-    context = "The secret code for the lab is 12345." 
+    context = "The secret code for the lab is 1s2345." 
     print(f"DEBUG: Retrieved Context: {context}")
     
     # 2. Augment
@@ -133,6 +140,8 @@ def retrieve_and_generate(query):
 
 retrieve_and_generate("What is the secret code?")
 ```
+
+**Narration Notes**: Walk through how the script pulls data from the DB and presents it to the LLM.
 
 ---
 
@@ -148,6 +157,6 @@ retrieve_and_generate("What is the secret code?")
 **Slide 9: Conclusion & Q&A**
 - **Content**:
     - RAG: The bridge to dynamic data.
-    - Key Takeaways: Embeddings, Vector DBs, and Prompt Augmentation.
+    - Key Takeaways: Embeddings, Vector Databases, and Prompt Augmentation.
 - **Image**: A "Thank You" slide with contact info.
 - **Speaker Notes**: Open the floor for questions about scalability or security.

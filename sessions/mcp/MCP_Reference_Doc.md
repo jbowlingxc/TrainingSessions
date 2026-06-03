@@ -35,7 +35,7 @@ The strength of [MCP](https://modelcontextprotocol.io) lies in its three-tier ar
 ### 🌐 HTTP (SSE) Servers
 These servers run as remote web services, accessible over the network via [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events).
 - **Pros**: Centralized hosting, easy to share across an organization, no local installation required for clients.
-- **Cons**: Introdus network latency and requires robust authentication/encryption (HTTPS).
+- **Cons**: Introduces network latency and requires robust authentication/encryption (HTTPS).
 <br>
 
 ### 🖥️ STDIO Servers
@@ -47,7 +47,7 @@ These servers run as local processes on the same machine as the client. Communic
 
 ## **Security & Auditing** 🛡️
 
-When giving an LLM "hands," security is paramount. An untrusted MCP server can perform **Remote Code Execution (RCE)** or **Data Ex/filtration**.
+When giving an LLM "hands," security is paramount. An untrusted MCP server can perform **Remote Code Execution (RCE)** or **Data Ex/filtration**. Always follow [OWASP](https://owasp.org/) guidelines when implementing tool-calling capabilities.
 
 <br>
 
@@ -61,7 +61,25 @@ When giving an LLM "hands," security is paramount. An untrusted MCP server can p
 
 <br>
 
+## **Code/Configuration Snippets**
+
+Configure an MCP server in your Claude Desktop configuration file (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "everything-server": {
+      "command": "npx",
+      "args": ["-y", "@modelprotocol/server-everything"]
+    }
+  }
+}
+```
+
+<br>
+
 ## **Glossary of Terms**
+Key terms used in the MCP ecosystem:
 - **RCE (Remote Code Execution)**: A vulnerability that allows an attacker to run arbitrary code on a target machine.
 - **Prompt Injection**: The act of manipulating an LLM's output or behavior via specially crafted input.
 - **SSE (Server-Sent Events)**: A standard allowing servers to push real-time updates to web pages over HTTP.

@@ -67,15 +67,52 @@ model's pre-existing knowledge. On the right, we see Few-Shot prompting. Here, w
 
 ---
 
-## Section 4: Advanced Integration (Estimated Time: 5 mins)
+## Section 4: Advanced Prompting & Tooling (Estimated and Time: 10 mins)
 
-### Slide 7: RAG and Context Management
+### Slide 7: The Power of Meta-Prompting
 
-"As we move toward production-grade AI, we encounter Retrieval Augmented Generation, or RAG. If you look at this architecture diagram, RAG allows us to bridge the gap between the model's training data and our own private, real-time data. We use a Vector Database to find relevant documents and then 'stuff' that context into the prompt. This is how we solve the problem of hallucinations and outdated information."
+"Now we reach the frontier of prompt engineering: Meta-Prompting. Instead of you struggling to write the perfect instruction, why not ask the LLM to do it for you? As you can see in this diagram, we use a high-level goal as input to an LLM acting as a 'Prompt Engineer'. It generates a structured, highly optimized prompt that is much more likely to succeed than our first manual attempt. This includes using the model to self-correct and refine its own instructions."
+
+### Slide 8: Managing Context with Structure
+
+"As prompts grow in complexity and length, we encounter the 'lost in the middle' phenomenon. LLMs are great at focusing on the beginning and end of a prompt, but they can lose track of details buried in the middle. To combat this, we use structural delimiters—things and Markdown headers to create clear boundaries. By clearly marking where instructions end and context begins using tags like `<context>`, we provide an unambiguous map for the model's attention mechanism."
 
 ---
 
-## [DEMO BREAK 2: Robustness & Evaluation] (Estimated Time: 20 mins)
+## [DEMO BREAK 3: Meta-Prompting in Action] (Estimated Time: 10 mins)
+
+**Goal**: Demonstrate an LLM generating a complex, few-shot prompt template from a simple instruction.
+
+**Step-by-Step Instructions**:
+1. Open the LLM interface/playground.
+2. Input a very basic, poor-quality prompt (e.g., "Write a summary").
+3. Now, input a Meta-Prompt: "You are an expert prompt engineer. Transform the following task into a high-quality, structured few-shot prompt using XML delimiters and clear instructions: [Task]".
+4. Compare the original output with the new, engineered version.
+
+**Code/Config Blocks**:
+```text
+Input Task: Summarize news articles.
+
+Meta-Prompt:
+"You are an expert Prompt Engineer. Your goal is to create a highly robust 
+and structured prompt for the task below. Use XML tags for structure, 
+define a clear persona, and include two high-quality few-shot examples."
+```
+
+**Narration Notes**: Highlight how the 'engineered' prompt is much more detailed, includes structural safeguards, and establishes a pattern that the model can follow reliably.
+
+---
+
+## Section 5: The Prompt Engineer's Toolkit (Estimated Time: 5 mins)
+
+### Slide 9: Tooling for Success
+
+"Finally, let's talk about your toolkit. Engineering requires testing, and testing requires tools. We use Playgrounds and IDE extensions to iterate quickly. But more importantly, we use evaluation frameworks like `promptfoo`. These allow us to run hundreds of test cases against different prompt versions simultaneously, giving us measurable data on which version is actually the most reliable. We should treat our prompts exactly like code: versioned, tested, and robust."
+
+---
+
+## [DEMO BREAK 2: Robustness & Evaluation] (Estimated and Time: 20 mins)
+
 
 **(Switch to shared screen for demo)**
 
