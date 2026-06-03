@@ -73,7 +73,7 @@ We will use **`uv`** for lightning-fast environment and dependency management.
 
 2. **Install Dependencies**:
    ```bash
-   uv pip install langchain langchain-community chromadb openai streamlit pypdf langchain-openai langchain-text-splitters
+   uv pip install langchain langchain-community chromadb openai streamlit pypdf langchain-openai langchain-text-splitters rank-bm25
    ```
 
 ---
